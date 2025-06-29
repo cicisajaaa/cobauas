@@ -9,5 +9,8 @@ package reminderminumair;
  * @author ASUS
  */
 public class WaterReminder {
+
+    public WaterReminder(String nama, int target) {
+    }
     
 }
