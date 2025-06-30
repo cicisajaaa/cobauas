@@ -33,7 +33,55 @@ public class ReminderMinumair {
                  System.out.println("0. Keluar");
                  System.out.println("Pilihan :");
                  pilihan = input.nextInt();
+                 
+                 switch (pilihan){
+                     case 1: 
+                         System.out.println("Masukkan Jumlah air (ml): ");
+                         int jumlah = input.nextInt();
+                         reminder.tambahAir(hariIni, jumlah);
+                         break;
+                     case 2: 
+                         reminder.lihatProgress(hariIni);
+                     case 3: 
+                         input.nextLine();
+                         try {
+                             System.out.println("Masukkan tanggal (yyyy-mm-dd): ");
+                             String tglInput = input.nextLine();
+                             LocalDate tanggalLain = LocalDate.parse(tglInput);
+                             System.out.println("Jumlah air (ml)");
+                             int jml = input.nextInt();
+                             reminder.tambahAir(tanggalLain, jml);
+                         } catch (Exception e) {
+                             System.out.println("Format tanggal salah! ");
+                         }
+                         break;
+                     case 4: 
+                         input.nextLine();
+                         try { 
+                             System.out.println("Masukkan tanggal yang ingin diedit : ");
+                             String editTgl = input.nextLine();
+                             LocalDate editTanggal = LocalDate.parse(editTgl);
+                             System.out.println("Jumlah air baru (ml) : ");
+                             int baru = input.nextInt();
+                             reminder.editAir(editTanggal, baru);
+                         } catch (Exception e){
+                             System.out.println("Format tanggal salah! ");
+                         }
+                         break;
+                     case 5:
+                         reminder.lihatRiwayat();
+                         break;
+                     case 0:
+                         System.out.println("Terimakasih sudah menggunakan aplikasi Pengingat Minum Air Sederhana.");
+                         break;
+                     default:
+                         System.out.println("Pilihan tidak tersedia.");
+                 }
              }
-         }
+         } catch (Exception e){
+             System.out.println("Input tidak valid.");
+         } finally {
+            input.close();
+        }
     }
 }
